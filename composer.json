@@ -1,16 +1,15 @@
 {
-    "name":"nour-almasrieh/socialwall",
+    "name":"innomedia/socialwall",
     "description": "Social Wall",
     "license": "BSD-2-Clause",
     "authors": [
       {
-        "name":"Nour Almasrieh",
-        "email": "nour.almasrieh@gmail.com",
-        "role": "Developer"
+        "name":"innomedia AG",
+        "email": "bk@innomedia.de"
       }
     ],
     "require":{
-      "silverstripe/recipe-cms": "^4.11",
+      "silverstripe/recipe-cms": "^4",
       "dnadesign/silverstripe-elemental": "^4",
       "axllent/silverstripe-scss": "^1.8",
       "unclecheese/silverstripe-image-optionset": "^2.0",
