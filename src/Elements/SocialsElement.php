@@ -143,7 +143,7 @@ class SocialsElement extends BaseElement
                 if(stristr($layoutVar['imgPath'], 'themes/') !== false){
                     $img = $layoutVar['imgPath'];
                 } else {
-                    $img = ModuleLoader::getModule('nour-almasrieh/socialwall')->getResource($layoutVar['imgPath']);
+                    $img = ModuleLoader::getModule('innomedia/socialwall')->getResource($layoutVar['imgPath']);
                     if($img){
                         $img->getURL();
                     }
