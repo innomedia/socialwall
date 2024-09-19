@@ -23,7 +23,7 @@ class SocialkAPITask extends BuildTask
         
         if(FacebookProvider::get() != null){
             foreach (FacebookProvider::get() as $fbProvider){
-                $fbProvider->RequestAccessToken();
+                //$fbProvider->RequestAccessToken();
                 $fbProvider->RequestFreshData();
             }
         }

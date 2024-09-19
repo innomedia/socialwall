@@ -1,0 +1,8 @@
+---
+Name: socialwallroutes
+After:
+  - 'weinbauverbandroutes'
+---
+SilverStripe\Control\Director:
+  rules:
+    'sociallwallapi//$Action/$ID/$Name': 'SocialPageController'

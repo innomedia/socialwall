@@ -109,6 +109,48 @@ class FacebookProvider extends DataObject
         }
         echo 'Fishing all Facebook Posts <br>';
     }
+    public function StartOAuthLoginURL($redirectUri)
+    {
+        $app_id = $this->AppID;
+        $redirect_uri = urlencode($redirectUri);
+        $state_param = 'Bernd';
+
+        $url = "https://www.facebook.com/v20.0/dialog/oauth";
+        $url .= "?client_id=".$app_id;
+        $url .= "&redirect_uri=".$redirect_uri;
+        $url .= "&state=".$state_param;
+
+        return $url;
+    }
+    public function validateAccessToken($redirectUri,$code)
+    {
+        $app_id = $this->AppID;
+        $redirect_uri = urlencode($redirectUri);
+        $app_secret = $this->AppSecret;
+    
+        $url = "https://graph.facebook.com/v20.0/oauth/access_token";
+        $url .= "?client_id=".$app_id;
+        $url .= "&redirect_uri=".$redirect_uri;
+        $url .= "&client_secret=".$app_secret;
+        $url .= "&code=".$code;
+        echo $url;
+        $ch = curl_init();
+    
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
+    
+        $result = curl_exec($ch);
+    
+        if (curl_errno($ch)) {
+            echo 'Error:' . curl_error($ch);
+        }
+    
+        curl_close($ch);
+    
+        // $result now contains the response from the Facebook API
+        return $result;
+    }
     public function RequestAccessToken()
     {
         $nowTimeStamp = strtotime(date("d-m-y H:i:s"));

@@ -104,8 +104,7 @@ class InstagramProvider extends DataObject
                         }
                     }
                     $content = $posts['caption'];
-                    $content1 = trim(ucfirst(preg_replace('/[^A-Za-zÄ-Üä-ü-!-?-#-.\s]/u', '', $content)));
-                    //Debug::dump($content1);
+                    $content1 = trim(ucfirst(preg_replace('/[^A-Za-zÄ-Üä-üß!?#.,:\s-]/u', '', $content)));
                     $newpost->Message = $content1;
                     $newpost->CreatedDate = $posts["timestamp"];
                     $newpost->PlatformLink = $posts["permalink"];
