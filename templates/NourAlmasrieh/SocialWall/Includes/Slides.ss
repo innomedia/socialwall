@@ -4,10 +4,10 @@
             <% loop $AllConfSocial %>
                 <div class="card-body py-2 px-3">
                     <% if $PlatformLink %>
-                        <a href="$PlatformLink" target="_blank">
+                        <a href="$PlatformLink" target="_blank" title="Post in neuem Tab öffnen">
                     <% end_if %>
                     <% if $ProfileImage %>
-                        <img src="$ProfileImage.Fit(35,35).Link" loading="lazy" class="img-fluid profileimage d-inline-block me-3">
+                        <img src="$ProfileImage.Fit(35,35).Link" loading="lazy" class="img-fluid profileimage d-inline-block me-3" alt="$ProfileImage.AltText">
                     <% end_if %>
                     <% if $Username %>
                         <h6 class="mb-0 d-inline-block username">$Username</h6>
@@ -26,7 +26,7 @@
         <% end_if %>
         <div class="p-0 position-relative">
             <div class="card-img-top">
-                <a href="$PlatformLink" target="_blank">
+                <a href="$PlatformLink" target="_blank" title="Post in neuem Tab öffnen">
                     <picture>
                         <source srcset="$Bild.FocusFill(770,770).URL" media="(min-width:768px)">
                         <source srcset="$Bild.FocusFill(1280,720).URL" media="(min-width:500px)">
@@ -37,7 +37,7 @@
             </div>
         </div>
         <div class="rounded-social-buttons platform__icon text-center">
-            <a class="social-button facebook" href="$PlatformLink" target="_blank">
+            <a class="social-button facebook" href="$PlatformLink" target="_blank" title="Post in neuem Tab öffnen">
                 <i class="fab $PlatformIconClass"></i>
             </a>
         </div>
