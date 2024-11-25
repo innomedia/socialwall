@@ -10,7 +10,8 @@
                             </h2>
                         </div>
                         <div class="col-12 col-md-6 col-lg-4 text-md-end">
-                            <a href="<% if $ExternalLink %>$ExternalLink <% else %>$LinkedPage.Link<% end_if %>" <% if $ExternalLink %> target="_blank" <% end_if %> class="btn btn-primary bg-green">
+                            <a href="<% if $ExternalLink %>$ExternalLink <% else %>$LinkedPage.Link<% end_if %>" <% if $ExternalLink %> target="_blank" <% end_if %> class="btn btn-primary bg-green"
+                            title="Seite <% if $ExternalLink %>$ExternalLink in neuem Tab <% else %>$LinkedPage.MenuTitle<% end_if %> öffnen">
                                 <% if $ButtonCaption %>
                                     $ButtonCaption
                                 <% else %>
