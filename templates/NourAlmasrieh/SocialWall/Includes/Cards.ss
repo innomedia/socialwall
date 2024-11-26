@@ -10,7 +10,7 @@
                         <img src="$ProfileImage.Fit(35,35).Link" loading="lazy" class="img-fluid profileimage d-inline-block me-3" alt="$ProfileImage.AltText">
                     <% end_if %>
                     <% if $Username %>
-                        <h6 class="mb-0 d-inline-block username">$Username</h6>
+                        <span class="mb-0 d-inline-block h6 username">$Username</h6>
                     <% end_if %>
                     <% if $PlatformLink %>
                         </a>
