@@ -20,7 +20,7 @@
         <% else %>
             <% if $Username %>
                 <div class="card-body py-2 px-3">
-                    <span class="mb-0 d-inline-block username">$Username</h6>
+                    <span class="mb-0 d-inline-block h6 username">$Username</h6>
                 </div>
             <% end_if %>
         <% end_if %>
