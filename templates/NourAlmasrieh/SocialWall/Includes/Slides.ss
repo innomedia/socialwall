@@ -10,7 +10,7 @@
                         <img src="$ProfileImage.Fit(35,35).Link" loading="lazy" class="img-fluid profileimage d-inline-block me-3" alt="$ProfileImage.AltText">
                     <% end_if %>
                     <% if $Username %>
-                        <span class="mb-0 d-inline-block h6 username">$Username</h6>
+                        <span class="mb-0 d-inline-block h6 username">$Username</span>
                     <% end_if %>
                     <% if $PlatformLink %>
                         </a>
@@ -20,7 +20,7 @@
         <% else %>
             <% if $Username %>
                 <div class="card-body py-2 px-3">
-                    <span class="mb-0 d-inline-block h6 username">$Username</h6>
+                    <span class="mb-0 d-inline-block h6 username">$Username</span>
                 </div>
             <% end_if %>
         <% end_if %>
