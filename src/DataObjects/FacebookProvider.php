@@ -2,7 +2,6 @@
 
 namespace NourAlmasrieh\SocialWall;
 
-use SilverStripe\Dev\Debug;
 use SilverStripe\Assets\Image;
 use SilverStripe\Assets\Folder;
 use SilverStripe\ORM\DataObject;

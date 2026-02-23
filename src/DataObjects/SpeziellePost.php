@@ -40,7 +40,7 @@ class SpeziellePost extends DataObject{
             'SocialsElementID',
             'SortOrder',
         ]);
-        $fields->addFieldToTab('Root.Main', new DropdownField('AllPostsID', 'Posts auswählen', AllPosts::get()->exclude('ID', 'ID')->map('ID', 'Message')));
+        $fields->addFieldToTab('Root.Main', DropdownField::create('AllPostsID', 'Posts auswählen', AllPosts::get()->map('ID', 'Message')->toArray()));
         return $fields;
     }
 }

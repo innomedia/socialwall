@@ -1,11 +1,13 @@
 <?php
 
-use SilverStripe\Dev\Debug;
-use SilverStripe\Core\Convert;
+namespace NourAlmasrieh\SocialWall\Controllers;
+
+use PageController;
 use SilverStripe\Control\Director;
-use SilverStripe\Security\Security;
-use SilverStripe\Control\Controller;
+use SilverStripe\Control\HTTPRequest;
+use SilverStripe\Control\HTTPResponse;
 use SilverStripe\Security\Permission;
+use SilverStripe\Security\Security;
 use NourAlmasrieh\SocialWall\FacebookProvider;
 
 class SocialPageController extends PageController
@@ -15,17 +17,17 @@ class SocialPageController extends PageController
         'endFaceBookOAuth',
     ];
 
-    public function startFaceBookOAuth()
+    public function startFaceBookOAuth(HTTPRequest $request): HTTPResponse
     {
         $member = Security::getCurrentUser();
 
         if ($member && Permission::check('ADMIN', 'any', $member)) {
             $provider = FacebookProvider::get()->first();
             if ($provider) {
-                $redirecturi = Controller::join_links(Director::absoluteURL("/"),'sociallwallapi','endFaceBookOAuth');
+                $redirecturi = Director::join_links(Director::absoluteURL('/'), 'sociallwallapi', 'endFaceBookOAuth');
                 $redirecturi = str_replace("http://","https://",$redirecturi);
                 $url = $provider->StartOAuthLoginURL($redirecturi);
-                $this->redirect($url);
+                return $this->redirect($url);
                 
             } else {
                 return $this->httpError(404, 'No Facebook Provider found');
@@ -36,30 +38,26 @@ class SocialPageController extends PageController
             return $this->httpError(403, 'You do not have permission to access this page');
         }
     }
-    public function endFaceBookOAuth()
+    public function endFaceBookOAuth(HTTPRequest $request): HTTPResponse
     {
         $member = Security::getCurrentUser();
 
-        if ($member && Permission::check('ADMIN', 'any', $member)) {
-            $provider = FacebookProvider::get()->first();
-            if ($provider) {
-                if($_GET["state"] == "Bernd")
-                {
-                    $redirecturi = Controller::join_links(Director::absoluteURL("/"),'sociallwallapi','endFaceBookOAuth');
-                    
-                    $redirecturi = str_replace("http://","https://",$redirecturi);
-                    $response = $provider->validateAccessToken($redirecturi, $_GET["code"]);
-                    Debug::dump($response);die;
-                }
-                
-                
-            } else {
-                return $this->httpError(404, 'No Facebook Provider found');
-            }
-
-        } else {
-            // The user is not logged in or does not have admin permissions
+        if (!$member || !Permission::check('ADMIN', 'any', $member)) {
             return $this->httpError(403, 'You do not have permission to access this page');
         }
+
+        $provider = FacebookProvider::get()->first();
+        if (!$provider) {
+            return $this->httpError(404, 'No Facebook Provider found');
+        }
+
+        if ($request->getVar('state') !== 'Bernd') {
+            return $this->httpError(400, 'Invalid OAuth state parameter');
+        }
+
+        $redirecturi = Director::join_links(Director::absoluteURL('/'), 'sociallwallapi', 'endFaceBookOAuth');
+        $redirecturi = str_replace('http://', 'https://', $redirecturi);
+        $response = $provider->validateAccessToken($redirecturi, (string) $request->getVar('code'));
+        return $this->getResponse()->setBody('<pre>' . htmlspecialchars($response ?? '') . '</pre>');
     }
 }

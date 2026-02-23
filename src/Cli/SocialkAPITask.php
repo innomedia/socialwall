@@ -1,12 +1,17 @@
 <?php
+
 namespace NourAlmasrieh\SocialWall;
 
+use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Dev\BuildTask;
 
 class SocialkAPITask extends BuildTask
 {
-    protected $title = 'Refresh Social (Facebook + Instagram) API Credentials';
-    protected $description = 'Refresh Social (Facebook + Instagram) API Credentials';
+    private static string $segment = 'socialwall-api-task';
+
+    protected string $title = 'Refresh Social (Facebook + Instagram) API Credentials';
+
+    protected string $description = 'Refresh Social (Facebook + Instagram) API Credentials';
     
     public function process()
     {
@@ -28,7 +33,7 @@ class SocialkAPITask extends BuildTask
             }
         }
     }
-    public function run($request)
+    public function run(HTTPRequest $request): void
     {
         $this->execute();
     }

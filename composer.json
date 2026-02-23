@@ -1,34 +1,35 @@
 {
-    "name":"innomedia/socialwall",
+    "name": "innomedia/socialwall",
     "description": "Social Wall",
     "license": "BSD-2-Clause",
     "authors": [
-      {
-        "name":"innomedia AG",
-        "email": "bk@innomedia.de"
-      }
+        {
+            "name": "innomedia AG",
+            "email": "bk@innomedia.de"
+        }
     ],
-    "require":{
-      "silverstripe/recipe-cms": "^5",
-      "dnadesign/silverstripe-elemental": "^5",
-      "axllent/silverstripe-scss": "^1.8",
-      "moritz-sauer-13/silverstripe-image-optionset": "^0.1.0",
-      "buckleshusky/fontawesomeiconpicker": "3.1.*",
-      "bummzack/sortablefile": "^2",
-      "ryanpotter/silverstripe-color-field": "^1.0"
+    "require": {
+        "php": "^8.3",
+        "silverstripe/recipe-cms": "^6",
+        "dnadesign/silverstripe-elemental": "^6",
+        "axllent/silverstripe-scss": "^2.0",
+        "moritz-sauer-13/silverstripe-image-optionset": "^1.0",
+        "buckleshusky/fontawesomeiconpicker": "^4",
+        "bummzack/sortablefile": "^3",
+        "symbiote/silverstripe-gridfieldextensions": "^5"
     },
     "autoload": {
-      "psr-4": {
-        "socialwall\\": "src/"
-      }
+        "psr-4": {
+            "NourAlmasrieh\\SocialWall\\": "src/"
+        }
     },
     "extra": {
-      "expose": [
-        "client/css",
-        "client/images",
-        "client/javascript",
-        "client/scss"
-      ]
+        "expose": [
+            "client/css",
+            "client/images",
+            "client/javascript",
+            "client/scss"
+        ]
     }
-  }
-  
+}
+

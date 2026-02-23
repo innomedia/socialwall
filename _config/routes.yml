@@ -5,4 +5,4 @@ After:
 ---
 SilverStripe\Control\Director:
   rules:
-    'sociallwallapi//$Action/$ID/$Name': 'SocialPageController'
+    'sociallwallapi//$Action/$ID/$Name': 'NourAlmasrieh\SocialWall\Controllers\SocialPageController'

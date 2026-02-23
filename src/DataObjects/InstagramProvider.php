@@ -2,7 +2,6 @@
 
 namespace NourAlmasrieh\SocialWall;
 
-use SilverStripe\Dev\Debug;
 use SilverStripe\Assets\Image;
 use SilverStripe\Assets\Folder;
 use SilverStripe\ORM\DataObject;
@@ -12,11 +11,10 @@ use SilverStripe\Forms\TextareaField;
 class InstagramProvider extends DataObject
 {
     private static $db = [
-        'AccessToken'  =>  'Text',
-        'AppID' =>  'Text',
-        'AppSecret' =>  'Text',
-        'AccessToken'   =>  "Text",
-        'ExpirationDate'    =>  'Text',
+        'AppID'          => 'Text',
+        'AppSecret'      => 'Text',
+        'AccessToken'    => 'Text',
+        'ExpirationDate' => 'Text',
     ];
     public function getCMSFields()
     {

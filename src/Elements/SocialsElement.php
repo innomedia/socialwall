@@ -2,7 +2,6 @@
 
 namespace NourAlmasrieh\SocialWall;
 
-use SilverStripe\Dev\Debug;
 use SilverStripe\ORM\ArrayList;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\View\ArrayData;
@@ -14,7 +13,6 @@ use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\DropdownField;
 use NourAlmasrieh\SocialWall\AllPosts;
 use SilverStripe\Forms\TreeDropdownField;
-use SilverStripe\ORM\FieldType\DBVarchar;
 use UncleCheese\Forms\ImageOptionsetField;
 use DNADesign\Elemental\Models\BaseElement;
 use NourAlmasrieh\SocialWall\SpeziellePost;
@@ -22,7 +20,6 @@ use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Core\Manifest\ModuleLoader;
 use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
 use SilverStripe\Forms\GridField\GridFieldDataColumns;
-use RyanPotter\SilverStripeColorField\Forms\ColorField;
 use SilverStripe\Forms\GridField\GridFieldAddNewButton;
 use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
 use Symbiote\GridFieldExtensions\GridFieldEditableColumns;
@@ -38,7 +35,7 @@ class SocialsElement extends BaseElement
     private static $inline_editable = false;
     private static $db = [
         'ElementStyle' => 'Text',
-        'BackgroundColor' => DBVarchar::class . '(7)',
+        'BackgroundColor' => 'Varchar(7)',
         'ExternalLink' => 'Text',
         'ButtonCaption' => 'Text',
         'SubTitle' => 'Text',
@@ -79,7 +76,10 @@ class SocialsElement extends BaseElement
             'custom' => 'Spezielle Auswahl - Posts können individuell angepasst werden',
             'bothstyle' => 'Erste 4er-Reihe - die Neueste Post & Zweite 4er-Reihe - die besondere Post können angepasst werden',
         ])->setEmptyString('Auswählen'));
-        $fields->addFieldsToTab('Root.Main',  ColorField::create('BackgroundColor','Hintergrund Farbe'));   
+        $fields->addFieldsToTab('Root.Main', TextField::create('BackgroundColor', 'Hintergrund Farbe')
+            ->setAttribute('placeholder', '#FFFFFF')
+            ->setAttribute('maxlength', '7')
+            ->setDescription('Hex-Farbcode (z.B. #003087). Hinweis: ryanpotter/silverstripe-color-field unterstützt SS6 noch nicht.'));   
         $fields->addFieldsToTab('Root.Main', TextField::create('SubTitle', 'SubTitle'));;
         $fields->addFieldsToTab('Root.Main', HTMLEditorField::create('Content', 'Inhalt')->setRows(8));
         $fields->addFieldsToTab('Root.Main', TextField::create('ButtonCaption', 'Button Beschriftung'),'SocialPageID');

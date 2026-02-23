@@ -1,11 +1,6 @@
 <?php
 namespace NourAlmasrieh\SocialWall;
 use Page;
-use SilverStripe\Dev\Debug;
-use SilverStripe\ORM\ArrayList;
-use SilverStripe\ORM\DataObject;
-use SilverStripe\View\ArrayData;
-use SilverStripe\Core\Config\Config;
 use SilverStripe\Forms\LiteralField;
 use SilverStripe\Forms\CheckboxField;
 
@@ -29,7 +24,7 @@ class SocialPage extends Page
             <div class='text-center'>
                 <br>
                 Um neue Einträge in Social Media zu erhalten
-                <a class='btn action btn-primary my-5 ml-3' target='_blank' href='/dev/tasks/NourAlmasrieh-SocialWall-SocialkAPITask'>Import</a>
+                <a class='btn action btn-primary my-5 ml-3' target='_blank' href='/dev/tasks/socialwall-api-task'>Import</a>
             </div>
         "), 'MenuTitle');
         $this->extend('updateSocialPageCMSFields', $fields);
