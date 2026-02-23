@@ -2,8 +2,11 @@
 
 namespace NourAlmasrieh\SocialWall;
 
-use SilverStripe\Control\HTTPRequest;
+use NourAlmasrieh\SocialWall\AllPosts;
 use SilverStripe\Dev\BuildTask;
+use SilverStripe\PolyExecution\PolyOutput;
+use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\InputInterface;
 
 class DeleteSocial extends BuildTask
 {
@@ -11,13 +14,14 @@ class DeleteSocial extends BuildTask
 
     protected string $title = 'Delete Social(Facebook + Instagram)';
 
-    protected string $description = 'Delete Social(Facebook + Instagram)';
+    protected static string $description = 'Delete Social(Facebook + Instagram)';
 
-    public function run(HTTPRequest $request): void
+    protected function execute(InputInterface $input, PolyOutput $output): int
     {
         $listPosts = AllPosts::get();
         foreach ($listPosts as $item) {
             $item->delete();
         }
+        return Command::SUCCESS;
     }
 }

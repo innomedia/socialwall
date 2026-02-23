@@ -2,8 +2,10 @@
 
 namespace NourAlmasrieh\SocialWall;
 
-use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Dev\BuildTask;
+use SilverStripe\PolyExecution\PolyOutput;
+use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\InputInterface;
 
 class SocialkAPITask extends BuildTask
 {
@@ -11,13 +13,9 @@ class SocialkAPITask extends BuildTask
 
     protected string $title = 'Refresh Social (Facebook + Instagram) API Credentials';
 
-    protected string $description = 'Refresh Social (Facebook + Instagram) API Credentials';
+    protected static string $description = 'Refresh Social (Facebook + Instagram) API Credentials';
     
-    public function process()
-    {
-        $this->execute();
-    }
-    public function execute()
+    protected function execute(InputInterface $input, PolyOutput $output): int
     {
         if(InstagramProvider::get() != null){
             foreach (InstagramProvider::get() as $instaProvider) {
@@ -32,9 +30,6 @@ class SocialkAPITask extends BuildTask
                 $fbProvider->RequestFreshData();
             }
         }
-    }
-    public function run(HTTPRequest $request): void
-    {
-        $this->execute();
+        return Command::SUCCESS;
     }
 }
