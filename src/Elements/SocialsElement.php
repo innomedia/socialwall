@@ -76,17 +76,17 @@ class SocialsElement extends BaseElement
             'custom' => 'Spezielle Auswahl - Posts können individuell angepasst werden',
             'bothstyle' => 'Erste 4er-Reihe - die Neueste Post & Zweite 4er-Reihe - die besondere Post können angepasst werden',
         ])->setEmptyString('Auswählen'));
-        $fields->addFieldsToTab('Root.Main', TextField::create('BackgroundColor', 'Hintergrund Farbe')
+        $fields->addFieldToTab('Root.Main', TextField::create('BackgroundColor', 'Hintergrund Farbe')
             ->setAttribute('placeholder', '#FFFFFF')
             ->setAttribute('maxlength', '7')
             ->setDescription('Hex-Farbcode (z.B. #003087). Hinweis: ryanpotter/silverstripe-color-field unterstützt SS6 noch nicht.'));   
-        $fields->addFieldsToTab('Root.Main', TextField::create('SubTitle', 'SubTitle'));;
-        $fields->addFieldsToTab('Root.Main', HTMLEditorField::create('Content', 'Inhalt')->setRows(8));
-        $fields->addFieldsToTab('Root.Main', TextField::create('ButtonCaption', 'Button Beschriftung'),'SocialPageID');
+        $fields->addFieldToTab('Root.Main', TextField::create('SubTitle', 'SubTitle'));;
+        $fields->addFieldToTab('Root.Main', HTMLEditorField::create('Content', 'Inhalt')->setRows(8));
+        $fields->addFieldToTab('Root.Main', TextField::create('ButtonCaption', 'Button Beschriftung'),'SocialPageID');
         $fields->insertAfter('ButtonCaption', TreeDropdownField::create('LinkedPageID', 'Interne Verlinkung', SiteTree::class)
             ->setDescription('Wird bevorzugt ausgegeben.')
             ->setEmptyString('Auswählen'));
-        $fields->addFieldsToTab('Root.Main', TextField::create('ExternalLink', 'Externe Verlinkung')
+        $fields->addFieldToTab('Root.Main', TextField::create('ExternalLink', 'Externe Verlinkung')
             ->setDescription('Muss mit "https://" gepflegt werden.<br>Wird alternativ zur internen Verlinkung ausgegeben.'),'SocialPageID');
 
         $fields->addFieldToTab('Root.Main', CheckboxField::create('ShowOnLimitPosts', 'Sollen die Posts auf 8 Stück Limitiert werden?'));
